@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f0">
+  <title>Biscuit Factory AI Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Biscuit Factory Assistant home">
+        <span class="brand-mark" aria-hidden="true">🍪</span>
+        <span><strong>Biscuit Factory</strong><small>AI Assistant</small></span>
+      </a>
+      <div class="top-actions">
+        <div class="service-state" id="serviceState"><span class="state-dot"></span><span>Checking AI service…</span></div>
+        <button class="button button-outline new-chat" id="newChat" type="button"><span aria-hidden="true">＋</span> New chat</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="intro-panel">
+        <span class="eyebrow"><span class="eyebrow-line"></span> HERE TO HELP</span>
+        <h1>Your smart assistant for biscuits, orders and customer support</h1>
+        <p>Ask naturally about our sample products, ingredients, pack sizes, or customer support.</p>
+        <div class="sample-note"><span aria-hidden="true">ⓘ</span> Product details are sample data. Please verify before using in a real business.</div>
+        <div class="quick-prompts" aria-label="Suggested questions">
+          <button type="button" class="prompt-chip" data-prompt="What biscuits do you have?">Explore biscuits <span>↗</span></button>
+          <button type="button" class="prompt-chip" data-prompt="What ingredients are used in Chocolate Crunch?">Ingredients <span>↗</span></button>
+          <button type="button" class="prompt-chip" data-prompt="Do you accept bulk orders?">Bulk orders <span>↗</span></button>
+        </div>
+      </section>
+
+      <section class="chat-card" aria-label="Chat with the biscuit assistant">
+        <div class="chat-heading">
+          <div class="assistant-avatar" aria-hidden="true">🍪</div>
+          <div class="assistant-name"><strong>Biscuit Factory AI Assistant</strong><span><i></i> Ready to help</span></div>
+          <div class="model-control"><label for="modelSelect">AI MODEL</label><select id="modelSelect" aria-label="Select AI model"><option>Loading models…</option></select></div>
+          <button type="button" id="clearChat" class="icon-button" title="Clear chat" aria-label="Clear chat">⌫</button>
+        </div>
+
+        <div class="messages" id="messages" aria-live="polite" aria-relevant="additions text">
+          <div class="welcome-block" id="welcomeBlock">
+            <div class="welcome-sun" aria-hidden="true">✳</div>
+            <h2>Good things start with a question.</h2>
+            <p>Hi there! I can help with products, flavors, pack sizes, and customer support questions.</p>
+            <div class="welcome-suggestions">
+              <button type="button" data-prompt="Which chocolate biscuits are available?">Which chocolate biscuits are available?</button>
+              <button type="button" data-prompt="What are the available pack sizes?">What are the available pack sizes?</button>
+              <button type="button" data-prompt="I received a damaged biscuit packet.">I received a damaged biscuit packet.</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="composer-wrap">
+          <form id="chatForm" class="composer">
+            <label class="sr-only" for="messageInput">Your message</label>
+            <textarea id="messageInput" rows="1" maxlength="4000" placeholder="Ask me anything about biscuits…" required></textarea>
+            <button class="send-button" id="sendButton" type="submit" aria-label="Send message"><span>Send</span><b aria-hidden="true">↑</b></button>
+          </form>
+          <div class="composer-foot"><span>Enter to send · Shift + Enter for a new line</span><span>AI responses may need verification</span></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>🍪</span> Crafted for better customer conversations <span class="footer-sep">·</span> <span id="selectedModelLabel">Model loading…</span></footer>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
